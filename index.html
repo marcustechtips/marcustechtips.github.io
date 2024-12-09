@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcus' Reviews</title>
+    <link rel="stylesheet" href="format.css">
+    <link rel="stylesheet" href="layout.css">
+  </head>
+  <body onload="initializePage()">
+    <div class="hero-section">
+      <div class="title"><strong>Reviews</strong></div>
+  </div>
+  <div>
+    <p id="day"></p>
+    <p id="date"></p>
+    <p id="time"></p>
+    <p id="countdown">Time to Noon on Sunday: Calculating...</p>
+  </div>
+<!--Below is code for a form-->
+<label for="search">Search for a review</label>
+  <br>
+  <form action="/example.html" method="POST">
+    <!--required element-->
+    <input type="text" class="text" name="first-text-field" required minlength="1" maxlength="50">
+  
+<!--slider-->
+ 
+    <label for="Decade"> Search by decade</label>
+    <br>
+    <input id="Decade" name="volume" type="range" min="1950" max="2020" step="10">
+
+  <!--checkbox-->
+ 
+    <p>Choose the review type</p>
+    <label for="Movies">Movies</label>
+    <input id="movies" name="review" type="checkbox" value="Movies">
+    <br>
+    <label for="Music">Music</label>
+    <input id="music" name="review" type="checkbox" value="Music">
+
+  <!--radio button-->
+ 
+    <p>Are you a review member?</p>
+    <input type="radio" id="status" name="answer" value="yes">
+    <label for="yes">Yes</label>
+    <br>
+    <input type="radio" id="status" name="answer" value="no">
+    <label for="no">No</label>
+    <br>
+  <!--spinner button-->
+  
+    <label for="years"> How many reviews displayed on your page </label>
+    <input id="years" name="years" type="number" step="1">
+    <br>
+  
+  <!--date/time button-->
+  
+  <label for="review">Search review by date:</label>
+<input type="datetime-local" id="date" name="date">
+  
+  <!--selection list-->
+  <label for="genre" class="genre">Choose a genre:</label>
+<select name="genre" id="genre">
+  <option value="Comedy">Comedy</option>
+  <option value="R&B">R&B</option>
+  <option value="Pop">Pop</option>
+  <option value="Horror">Horror</option>
+</select>
+<br>
+<!--text area-->
+<label for="reviews">Leave a note on the site!</label>
+<br>
+<textarea id="w3review" name="w3review" rows="4" cols="50">
+Please place any thoughts or opinions here.
+</textarea>
+<!--moobile keyboard-->
+<br>
+<label for="text" >Please enter your phone number here</label>
+<!--validate phone number with patters-->
+<input type="text" inputmode="numeric" required pattern="[0-9]{14,16}">
+<br>
+<!--droplist-->
+
+  <label for="reviews">Jump to a review</label>
+  <input type="text" list="reviews" id="names" name="names">
+  <!--Displays a data list-->
+  <datalist id="reviews">
+    <option value="Civil War"></option>
+    <option value="The Thief Next To Jesus"></option>
+    <option value="Some Rap Songs"></option>
+    <option value="Twisters"></option>
+  </datalist>
+  <!--Displays a submit button-->
+  
+    <input type="submit" value="Send">
+  
+</form>
+
+  <div class="content-section">
+    <h2 class="section-title">Recent Reviews</h2>
+      <div class="dropdown" onclick="toggleDropdown()">
+          <div class="hamburger"></div>
+          <div class="hamburger"></div>
+          <div class="hamburger"></div>
+
+          <div class="dropdown-content">
+              <a href="music.html">Music Reviews</a>
+              <a href="movie.html">Movie Reviews</a>
+          </div>
+      </div>
+
+
+      <div class="review-item">
+          <img src="movie1.png" alt="Review Image 1"> 
+          <p>
+            <h1>Civil War</h1>
+            <h3><strong>2.5/5</strong></h3>
+            This movie lacked meaning choosing to follow a theme of dreamed up violence. While the graphics in the movie was spectacular, I believe a fleshed out plot would have done wonders for this movie.
+          </p>
+      </div>
+      <!--code below converts numbers to text-->
+      <script>
+        const kaScore = 5;
+        let score = "Final score:";      
+        window.onload = function() {
+          const scoreText = `${score} ${kaScore} / ${kaScore}`;
+          document.getElementById("kaReviewScore").textContent = scoreText;
+        };
+      </script>
+      
+      <div class="review-item">
+          <img src="music1.png" alt="Review Image 2">
+          <p>
+              <h1>Ka - The Thief Next To Jesus</h1> 
+              <h3><strong id="kaReviewScore"></strong></h3>
+              In The Thief Next To Jesus, Brownsville rapper Ka critiques sensationalized hip hop culture and opts to celebrate the qualities of culture that he takes from, such as loving God, family, and your neighbor as your own. Mixed with amazing analogies and eloquent production, this album is for anyone who believes in anything strongly and lovingly.
+          </p>
+      </div>
+
+<footer class="footer">
+  <p id="reviewCount"></p>
+  <p>&copy; 2024 Marcus Ruhashya - <a href="https://brightspace.cpcc.edu" target="_blank">marcusreviewsthis.com</a></p>
+</footer>
+
+<script>
+  function initializePage() {
+      displayCurrentDateTime();
+      updateReviewCount();
+      startCountdownToSunday();
+      setInterval(displayCurrentDateTime, 1000);
+      // delay the review counter from refreshing every 30 seconds
+      setInterval(updateReviewCount, 30000);
+  }
+
+  // Display current date and time
+  let alertShown = false;
+  function displayCurrentDateTime() {
+      const now = new Date();
+      const day = now.toLocaleDateString(undefined, { weekday: 'long' });
+      const date = now.toLocaleDateString();
+      const time = now.toLocaleTimeString();
+
+      document.getElementById("day").textContent = "Today is: " + day;
+      document.getElementById("date").textContent = "Date: " + date;
+      document.getElementById("time").textContent = "Time: " + time;
+// Display an alert every Sunday for a new review posted
+      if (day === "Sunday" && !alertShown) {
+          alert("New review posted!");
+          alertShown = true;
+      }
+  }
+  // Update review count using math method (incremental)
+  function updateReviewCount() {
+      let reviewItems = 0;
+      document.querySelectorAll('.review-item').forEach(() => {
+          reviewItems++;
+      });
+      document.getElementById('reviewCount').textContent = `Number of Reviews: ${reviewItems}`;
+  }
+  // Countdown to Noon on Sunday
+  function startCountdownToSunday() {
+      const countdownElement = document.getElementById("countdown");
+      function updateCountdown() {
+          const now = new Date();
+          // Calculate the next Sunday
+          let daysToSunday = (7 - now.getDay()) % 7;
+          let nextSunday = new Date(now.getFullYear(), now.getMonth(), now.getDate() + daysToSunday);
+          // Set the time to noon on Sunday
+          nextSunday.setHours(12, 0, 0, 0);
+          // If today is Sunday but past noon, move to the next Sunday
+          if (now.getDay() === 0 && now > nextSunday) {
+              nextSunday = new Date(nextSunday.getFullYear(), nextSunday.getMonth(), nextSunday.getDate() + 7);
+              nextSunday.setHours(12, 0, 0, 0);
+          }
+          const timeDifference = nextSunday - now;
+          if (timeDifference > 0) {
+              const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+              const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+              const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+              countdownElement.textContent = `Time to Noon on Sunday: ${hours}h ${minutes}m ${seconds}s`;
+          } else {
+              countdownElement.textContent = "It's Noon on Sunday!";
+          }
+      }
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+  }
+</script>
+
+
+
+
+  </body>
+
+
+
+</html>

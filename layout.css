@@ -1,0 +1,67 @@
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url('blach.png'); 
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  font-family: Arial, sans-serif;
+}
+
+
+.content-section {
+  background-color: #f5f5dc;
+  padding: 40px 20px;
+  position: relative;
+}
+
+
+.dropdown {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+
+.hamburger {
+  width: 30px;
+  height: 3px;
+  background-color: #333; 
+  transition: 0.4s;
+}
+
+
+.dropdown.active .dropdown-content {
+  display: block;
+}
+
+
+.review-item {
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: #f5f5f5;
+  font-size: 0.9em;
+}
+
+.footer a {
+  color: #f5f5f5;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
