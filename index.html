@@ -23,7 +23,7 @@
   <form action="/example.html" method="POST">
     <!--required element-->
     <input type="text" class="text" name="first-text-field" required minlength="1" maxlength="50">
-  
+  <br>
 <!--slider-->
  
     <label for="Decade"> Search by decade</label>
@@ -99,16 +99,23 @@ Please place any thoughts or opinions here.
 
   <div class="content-section">
     <h2 class="section-title">Recent Reviews</h2>
-      <div class="dropdown" onclick="toggleDropdown()">
-          <div class="hamburger"></div>
-          <div class="hamburger"></div>
-          <div class="hamburger"></div>
-
-          <div class="dropdown-content">
-              <a href="music.html">Music Reviews</a>
-              <a href="movie.html">Movie Reviews</a>
-          </div>
+    <script>
+      // Function to toggle the dropdown menu
+      function toggleDropdown() {
+          const dropdown = document.querySelector('.dropdown');
+          dropdown.classList.toggle('active');
+      }
+    </script>
+    <div class="dropdown" onclick="toggleDropdown()">
+      <div class="hamburger"></div>
+      <div class="hamburger"></div>
+      <div class="hamburger"></div>
+  
+      <div class="dropdown-content">
+          <a href="music.html">Music Reviews</a>
+          <a href="movie.html">Movie Reviews</a>
       </div>
+  </div>
 
 
       <div class="review-item">
