@@ -32,13 +32,11 @@
 }
 
 .dropdown-content {
-  display: none; 
-  background-color: #f9f9f9;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  display: none;
   position: absolute;
-  top: 40px;
-  left: 0;
+  background-color: #f9f9f9;
   min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -50,7 +48,7 @@
 }
 
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background-color: #ddd;
 }
 /*below is css code for focus psuedo class */
 .text {
